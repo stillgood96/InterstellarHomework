@@ -63,12 +63,9 @@
 <script>
   document.addEventListener("DOMContentLoaded", function(){
     console.log("Start Homework2 !!");
-
-
   });
 
   function addType() {
-    console.log("Start AddType");
     let coinType = document.querySelectorAll('.coinType');
 
     let coinContainer = document.createElement("tr");
@@ -83,7 +80,6 @@
   }
 
   function deleteType() {
-    console.log("Start DeleteType");
     let coinType = document.querySelectorAll('.coinType');
 
     if(coinType.length > 1) {
@@ -92,8 +88,6 @@
   }
 
   function inputTotalAmount(el) {
-    console.log("Start inputTotalAmount");
-
     let submitTotalAmount = document.getElementById("totalSubmitAmount");
     el.value = el.value.replace(/[^0-9]/g,'');
 
@@ -111,20 +105,17 @@
   }
 
   function inputCoinPrice(el) {
-    console.log("Start inputCoinPrice");
     el.value = el.value.replace(/[^0-9]/g,'');
     el.nextElementSibling.value = el.value;
     el.value = el.value.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
   }
 
   function inputCoinAmount(el) {
-    console.log("Start inputCoinAmount");
     el.value = el.value.replace(/[^0-9]/g,'');
     el.nextElementSibling.value = el.value;
   }
 
   function goCalculation() {
-    console.log("Start Caculation");
     let resultContainer = document.getElementById('resultContainer');
     let totalAmount = document.getElementById("totalSubmitAmount");
     let coinSubmitPriceList = document.getElementsByClassName("coinSubmitPrice");
@@ -150,7 +141,7 @@
 
     if(coinSubmitPriceList.length > 0 && coinSubmitAmountList.length > 0) {
 
-      let result = fetch('http://localhost:8080/homework2API.do', {
+      let result = fetch('http://ec2-3-218-75-64.compute-1.amazonaws.com:5009/homework2API.do', {
         method: "POST",
         headers: {  "Content-Type": "application/json; charset=utf-8" },
         body: JSON.stringify({

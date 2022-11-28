@@ -3,9 +3,7 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import vo.Homework2;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,12 +46,9 @@ public class MainController {
       for(int i = 1; i < coinPriceArray.size() + 1; i ++) {
         coin[i][0] = Integer.parseInt(coinPriceArray.get(i-1)); // 가격
         coin[i][1] = Integer.parseInt(coinAmountArray.get(i-1)); // 개수
-        System.out.println(coin[i][0] + " / " + coin[i][1] );
       }
 
       dp[0][0] = 1;
-      int count = 0;
-      List<String> result = new ArrayList<>();
       for(int i = 1; i < coinPriceArray.size() + 1; i++) {
         int cost = coin[i][0];
         for(int j = 0; j < coin[i][1] + 1; j++) {
@@ -70,8 +65,6 @@ public class MainController {
 
       mv.addObject("success", true);
       mv.addObject("result", dp[coinPriceArray.size()][totalAmount]);
-      System.out.println(dp[coinPriceArray.size()][totalAmount]);
-
     }
 
     return mv;
